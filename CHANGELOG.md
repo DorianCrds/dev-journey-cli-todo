@@ -10,13 +10,37 @@ and this project follows semantic versioning.
 ## [Unreleased]
 
 ### Planned
-
-* Migrate from a menu‑based CLI to a command‑driven interface using `argparse`
-* Introduce subcommands (add, list, done, delete)
-* Improve error handling and help messages
-* Make the application easier to script and automate
+* Optional flags for commands (e.g. `--force`, filters for `list`)
+* JSON output mode for scripting
+* Unit tests
+* Packaging as an installable CLI command
 
 ---
+
+## [v2.0.0] – Argparse-based CLI release
+
+### Added
+* Argparse-based command-line interface
+* Subcommands: `add`, `list`, `done`, `delete`
+* Scriptable and automation-friendly command execution
+* Robust JSON initialization and recovery
+* Clear user feedback messages
+* Consistent exit codes for success and failure
+* Cleaner project structure with dedicated CLI and persistence layers
+
+### Changed
+* Replaced interactive menu with command-driven workflow
+* Refactored user interaction logic into CLI commands
+* Improved data persistence robustness and error handling
+* Improved overall code readability and maintainability
+
+### Removed
+* Interactive menu system
+* Runtime user input via `input()`
+
+### Breaking changes
+* The interactive menu-based interface has been removed
+* All interactions must now be performed via command-line arguments
 
 ## [v1.0.0] – Initial stable version
 

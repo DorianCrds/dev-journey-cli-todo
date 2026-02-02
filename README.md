@@ -1,124 +1,130 @@
-# CLI Todo Application (V1)
+# CLI Todo Application (V2)
 
-This project is part of my **Dev Journey**, a structured, project‑based exploration of core software development concepts.
+This project is part of my **Dev Journey**, a structured, project-based exploration of core software development concepts.
 
-The goal of this project is to build a **simple command‑line Todo application** using Python, focusing on logic, structure, and data persistence without introducing external dependencies or advanced tooling.
+Version **v2.0.0** marks a major evolution of the project:  
+the application is now a **professional, scriptable command-line tool** built with Python and `argparse`.
 
-This README reflects the state of the project at **version v1.0.0**.
+The focus of this version is on **CLI best practices**, clean architecture, and robustness, while keeping the project dependency-free and easy to understand.
 
 ---
 
 ## Project goals
 
-* Build a functional CLI application from scratch
-* Practice core programming logic (loops, conditions, functions)
-* Design a simple, menu‑driven command‑line interface
-* Persist user data between executions using a JSON file
+* Build a professional command-line application using `argparse`
+* Replace interactive menus with command-driven workflows
+* Design a scriptable and automation-friendly CLI
+* Improve robustness and error handling
+* Maintain a clean separation of concerns
 
-The scope is intentionally limited to keep the focus on fundamentals.
+This version intentionally shifts from a learning-oriented UX to a **production-style CLI design**.
 
 ---
 
-## Features (V1)
+## Features (V2)
 
-* Interactive menu displayed in the terminal
-* Add a new task
-* Display the list of existing tasks
-* Mark a task as completed
-* Delete a task with confirmation
+* Argparse-based command-line interface
+* Subcommands:
+  * `add` — add a new task
+  * `list` — list existing tasks
+  * `done` — mark a task as completed
+  * `delete` — delete a task
 * Persistent storage using a local JSON file (`data.json`)
-* Basic input validation and error handling
+* Automatic initialization and recovery of the JSON storage
+* Clear user feedback and consistent exit codes
+* Scriptable and automation-friendly behavior
 
 ---
 
-## How it works
+## Usage
 
-When the application starts:
+```bash
+python task.py add "Buy groceries"
+python task.py list
+python task.py done 2
+python task.py delete 3
+```
 
-* A `data.json` file is automatically created if it does not exist
-* The user is greeted with a menu‑based interface
-* The application runs in a loop until the user chooses to exit
-
-All interactions are handled through standard input/output (`input()` / `print()`), making the flow explicit and easy to follow.
-
----
-
-## Technologies used (V1)
-
-* **Python 3**
-* **JSON** for data persistence
-* Python standard library only (`json`, `pathlib`, `os`)
-
-> ⚠️ Note: Argument parsing libraries such as `argparse` are **not used in V1**. The CLI is entirely menu‑driven.
-
----
-
-## Example session
-
-```text
-Welcome to your command-line ToDoList Application !
-----------------------------------------
-Please select your option :
-    1 - Add new task
-    2 - Show tasks list
-    3 - Mark task as completed
-    4 - Delete task
-    5 - Exit application
-
-Enter the option's number >> 1
-Enter the new task title >> Buy groceries
+Help is available for the main command and all subcommands :
+```bash
+python task.py -h
+python task.py add -h
 ```
 
 ---
 
-## Project structure (V1)
+## How it works
+- The JSON data file is automatically created or repaired at startup if needed
+- Each command is executed directly from the command line
+- No interactive prompts (input()) are used
+- Each command returns a clear message and an appropriate exit code
+
+This design makes the application suitable for : Shell scripting, Automation, CI / batch usage, PowerShell or Bash pipelines
+
+---
+
+## Project structure (V2)
 
 ```bash
 .
-├── main.py                # Application entry point
-├── options_controller.py  # Menu and user interactions
-├── json_operations.py     # Data persistence logic
-├── data.json              # Tasks storage (auto‑generated)
+├── task.py                # CLI entry point (argparse)
+├── cli_commands.py        # CLI command implementations
+├── json_operations.py     # Data persistence layer
+├── data.json              # Tasks storage (auto-generated)
 ├── CHANGELOG.md
 └── README.md
 ```
 
 ---
 
+## Technologies used
+- Python 3.11
+- argparse (Python standard library)
+- JSON for data persistence
+- Python standard library only
+
+No external dependencies are required.
+
+---
+
 ## Key concepts practiced
 
-* Program flow control (while loops, conditionals)
-* Function design and separation of concerns
-* Input validation and user feedback
-* File I/O and JSON manipulation
-* Simple state persistence
-* Readable and maintainable code structure
+- Argparse and subcommand-based CLI design
+- Separation of concerns (CLI / business logic / persistence)
+- Robust file handling and data validation
+- Exit codes and CLI feedback conventions
+- Scriptable and automation-friendly application design
+- Semantic versioning and release management
 
 ---
 
 ## Scope & limitations
 
-* Local, single‑user application
-* No command‑line arguments or subcommands
-* No concurrency or multi‑user support
-* No external dependencies
+- Local, single-user application
+- JSON-based storage (no database)
+- No concurrency or multi-user support
+- No external dependencies
 
-These limitations are intentional and serve as a foundation for future iterations.
+These constraints are intentional and aligned with the project’s educational goals.
 
 ---
 
-## Next steps
+## Versioning
 
-The next major version (V2) will introduce:
+This project follows Semantic Versioning.
+- v1.x — Interactive, menu-based CLI
+- v2.x — Argparse-based, professional CLI
 
-* A true command‑line interface using `argparse`
-* Subcommands instead of an interactive menu
-* Clearer UX for scripting and automation use cases
-
-This refactor will focus on improving extensibility and CLI ergonomics while preserving the existing core logic.
+Version v2.0.0 introduces breaking changes compared to V1.
 
 ---
 
 ## How this fits into my dev journey
 
-This project represents an early but important milestone in my learning path. It focuses on transferable fundamentals that apply to nearly all types of applications, from backend services to desktop and automation tools.
+This version represents a key milestone:
+the transition from a beginner-friendly interactive program to a professional command-line tool architecture.
+
+It demonstrates the ability to:
+- Refactor an existing codebase
+- Improve UX without rewriting core logic
+- Apply real-world CLI standards and practices
