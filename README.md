@@ -2,7 +2,7 @@
 
 This project is part of my **Dev Journey**, a structured, project-based exploration of core software development concepts.
 
-[View Dev Journey GitHub 'Hub' repository](https://github.com/DorianCrds/dev-journey-static-website)
+[View Dev Journey GitHub 'Hub' repository](https://github.com/DorianCrds/dev-journey)
 
 Version **v2.0.0** marks a major evolution of the project:  
 the application is now a **professional, scriptable command-line tool** built with Python and `argparse`.
